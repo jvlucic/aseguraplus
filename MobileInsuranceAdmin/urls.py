@@ -1,0 +1,16 @@
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+from mi_admin.models import Configuracion,Dispositivo,Usuario
+from django.contrib.auth.models import Group, User
+from django.contrib.sites.models import Site
+
+admin.autodiscover()
+admin.site.register(Configuracion)
+admin.site.register(Usuario)
+admin.site.unregister(Group)
+admin.site.unregister(Site)
+admin.site.unregister(User)
+
+urlpatterns = patterns('',
+    url(r'^admin/', include(admin.site.urls)),
+)
